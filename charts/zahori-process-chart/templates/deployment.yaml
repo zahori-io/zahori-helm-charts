@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: {{ include "zahori-process.name" . }}
+  name: {{ include "zahori-process.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "zahori-process.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "zahori-process.name" . }}
+    spec:
+      containers:
+      - env:
+        - name: ZAHORI_CONSUL_HOST
+          value: {{ .Values.url.ZAHORI_CONSUL_HOST }}
+        - name: ZAHORI_SELENOID_HOST
+          value: {{ .Values.url.ZAHORI_SELENOID_HOST }}
+        envFrom:
+        - configMapRef:
+            name: {{ include "zahori-process.fullname" . }}-config
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        lifecycle:
+          preStop:
+            exec:
+              command:
+              - sh
+              - -c
+              - sleep 10
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /actuator/health/liveness
+            port: {{ .Values.service.port }}
+            scheme: HTTP
+          initialDelaySeconds: 120
+          successThreshold: 1
+        name: zahori
+        ports:
+        - containerPort: {{ .Values.service.port }}
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /actuator/health/readiness
+            port: {{ .Values.service.port }}
+            scheme: HTTP
+          initialDelaySeconds: 20
+          successThreshold: 1
+        resources:
+          limits:
+            cpu: {{ .Values.resources.limits.cpu }}
+            memory: {{ .Values.resources.limits.memory }}
+          requests:
+            cpu: {{ .Values.resources.requests.cpu }}
+            memory: {{ .Values.resources.requests.memory }}

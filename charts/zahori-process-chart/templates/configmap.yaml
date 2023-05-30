@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "zahori-process.fullname" . }}-config
+  namespace: {{ .Release.Namespace }}
+data:
+  {{- toYaml .Values.configMap | nindent 2 }}
+  ZAHORI_PROCESS_PORT: "{{ .Values.service.port }}"
+
