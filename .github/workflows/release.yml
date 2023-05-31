@@ -23,3 +23,24 @@ jobs:
         uses: helm/chart-releaser-action@v1.5.0
         env:
           CR_TOKEN: "${{ secrets.TOKEN }}"
+          
+      - name: Install Helm
+        run: |
+          curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+          chmod 700 get_helm.sh
+          ./get_helm.sh          
+          
+      - name: List Charts
+        run: |
+          CHARTS_DIR=charts
+          for chart_dir in $CHARTS_DIR/*/; do
+            chart_name=$(basename "$chart_dir")
+            echo "Packaging chart: $chart_name"
+            helm package "$chart_dir" -d "$CHARTS_DIR"
+          done
+          
+      - name: Update Index
+        run: |
+          helm repo index --url https://zahori-io.github.io/zahori-helm-charts/ --merge ./charts/index.yaml ./charts/*.tgz   
+          
+        
