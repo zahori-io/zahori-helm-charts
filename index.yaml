@@ -3,6 +3,19 @@ entries:
   zahori-process:
   - apiVersion: v2
     appVersion: 0.1.12
+    created: "2023-05-31T13:37:31.94609718Z"
+    description: Zahori Process Example Wikipedia
+    digest: fb0bc266b4c37928fdbbd449f2be406186717fd847c870ce3b1cff962fb0d24e
+    maintainers:
+    - email: info@zahori.io
+      name: Panel Sistemas Zahori Team
+    name: zahori-process
+    type: application
+    urls:
+    - https://github.com/zahori-io/zahori-helm-charts/releases/download/zahori-process-1.0.1/zahori-process-1.0.1.tgz
+    version: 1.0.1
+  - apiVersion: v2
+    appVersion: 0.1.12
     created: "2023-05-31T12:22:55.23864902Z"
     description: Zahori Process Example Wikipedia
     digest: d717bd908c1188dc6296ed23f078094860b752c82df489b8bfe32596aa91c22e
@@ -14,4 +27,4 @@ entries:
     urls:
     - https://github.com/zahori-io/zahori-helm-charts/releases/download/zahori-process-1.0.0/zahori-process-1.0.0.tgz
     version: 1.0.0
-generated: "2023-05-31T12:22:55.23869352Z"
+generated: "2023-05-31T13:37:31.94610508Z"
