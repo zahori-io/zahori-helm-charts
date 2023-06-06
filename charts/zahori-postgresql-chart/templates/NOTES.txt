@@ -1,0 +1,8 @@
+1. The data to configure your database are:
+{{- if contains "NodePort" .Values.service.type }}
+  HOST: kubectl get nodes --namespace {{ .Values.namespace }} -o jsonpath="{.items[0].status.addresses[0].address}"
+  PORT: kubectl get --namespace {{ .Values.namespace }} -o jsonpath="{.spec.ports[0].nodePort}" services {{ include "zahori-postgresql-chart.service.name" . }}
+  DATABSENAME: {{ .Values.postgres.db }}
+  USER: {{ .Values.postgres.user }}
+  PASSWORD: {{ .Values.postgres.password }}
+{{- end }}
