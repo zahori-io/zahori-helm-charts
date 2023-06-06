@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app: {{ include "zahori-postgresql-chart.label" . }}
+  name: {{ include "zahori-postgresql-chart.config.public" . }}
+  namespace: {{ .Values.namespace }}
+data:
+  POSTGRES_DB: {{ .Values.postgres.db }}
+  POSTGRES_USER: {{ .Values.postgres.user }}
