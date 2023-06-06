@@ -1,5 +1,16 @@
 apiVersion: v1
 entries:
+  zahori-postgresql:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-06-06T10:26:38.660392691Z"
+    description: A Helm chart for Kubernetes
+    digest: 94b08e93cfa7b1a868c3eaa0cf29509b458349d7f09fa06294338f095503a6a0
+    name: zahori-postgresql
+    type: application
+    urls:
+    - https://github.com/zahori-io/zahori-helm-charts/releases/download/zahori-postgresql-1.0.0/zahori-postgresql-1.0.0.tgz
+    version: 1.0.0
   zahori-process:
   - apiVersion: v2
     appVersion: 0.1.12
@@ -27,4 +38,4 @@ entries:
     urls:
     - https://github.com/zahori-io/zahori-helm-charts/releases/download/zahori-process-1.0.0/zahori-process-1.0.0.tgz
     version: 1.0.0
-generated: "2023-05-31T13:37:31.94610508Z"
+generated: "2023-06-06T10:26:38.660411691Z"
