@@ -16,7 +16,7 @@ Ensure that Helm is installed on your local machine. You can follow the installa
 To add the repository that contains the Helm chart, run the following command:
 
 ```shell
-helm repo add zahori https://zahori.io/helm-charts
+helm repo add zahori https://zahori-io.github.io/zahori-helm-charts
 ```
 
 This will add the repository with the name "zahori".
