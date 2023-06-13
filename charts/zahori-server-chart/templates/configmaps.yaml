@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app: {{ include "zahori-server-chart.label" . }}
+  name: {{ include "zahori-server-chart.config.scripts" . }}
+  namespace: {{ .Values.namespace }}
+data:
+{{- (.Files.Glob "sqls/*.sql").AsConfig | nindent 2 }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app: {{ include "zahori-server-chart.label" . }}
+  name: {{ include "zahori-server-chart.config.public" . }}
+  namespace: {{ .Values.namespace }}
+data:
+  ZAHORI_CONSUL_PORT: "{{ .Values.config.ZAHORI_CONSUL_PORT }}"
+  ZAHORI_DB_NAME: "{{ .Values.config.ZAHORI_DB_NAME }}"
+  ZAHORI_DB_PORT: "{{ .Values.config.ZAHORI_DB_PORT }}"
+  ZAHORI_DB_SCHEMA: "{{ .Values.config.ZAHORI_DB_SCHEMA }}"
+  ZAHORI_DB_USER: "{{ .Values.config.ZAHORI_DB_USER }}"
+  ZAHORI_SELENOID_PORT: "{{ .Values.config.ZAHORI_SELENOID_PORT }}"
+  ZAHORI_SELENOID_UI_EXTERNAL_HOST: "{{ .Values.config.ZAHORI_SELENOID_UI_EXTERNAL_HOST }}"
+  ZAHORI_SELENOID_UI_EXTERNAL_PORT: "{{ .Values.config.ZAHORI_SELENOID_UI_EXTERNAL_PORT }}"
+  ZAHORI_SELENOID_UI_INTERNAL_PORT: "{{ .Values.config.ZAHORI_SELENOID_UI_INTERNAL_PORT }}"
+  ZAHORI_SERVER_PORT: "{{ .Values.config.ZAHORI_SERVER_PORT }}"
