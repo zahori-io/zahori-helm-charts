@@ -1,0 +1,18 @@
+{{- if .Values.traefik.enabled -}}
+apiVersion: {{ .Values.traefik.apiVersion }}
+kind: IngressRoute
+metadata:
+  name: openzahori-consul-ingressroute
+  namespace: {{ .Values.namespace }}
+spec:
+  entryPoints:
+  - web
+  routes:
+  {{- range $host := .Values.traefik.hosts }}
+      - match: Host(`{{ $host.host }}`) && PathPrefix(`{{ $host.prefix }}`)
+        kind: Rule
+        services:
+          - name: {{ $host.service.name }}
+            port: {{ $host.service.port }}
+  {{- end }}
+{{- end }}
