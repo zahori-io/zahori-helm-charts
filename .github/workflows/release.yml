@@ -24,6 +24,18 @@ jobs:
       - name: Install Helm
         uses: azure/setup-helm@v3
         
+      - name: Add aerokube Helm repo
+        run: |
+          helm repo add aerokube https://charts.aerokube.com/
+
+      - name: Add hashicorp Helm repo
+        run: |
+          helm repo add hashicorp https://helm.releases.hashicorp.com
+
+      - name: Update Helm repos
+        run: |
+          helm repo update
+        
       - name: Update dependencies
         run: |
           for dir in ./charts/*; do
