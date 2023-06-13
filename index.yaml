@@ -1,6 +1,46 @@
 apiVersion: v1
 entries:
+  zahori-consul:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-06-13T13:58:11.217980449Z"
+    dependencies:
+    - name: consul
+      repository: https://helm.releases.hashicorp.com
+      version: 1.1.2
+    description: A Helm chart for Kubernetes
+    digest: 8a7ee2ae15ecaa7c2517823bc1df754cad8efb244ddf7528abad9ac265448937
+    name: zahori-consul
+    type: application
+    urls:
+    - https://github.com/zahori-io/zahori-helm-charts/releases/download/zahori-consul-1.0.0/zahori-consul-1.0.0.tgz
+    version: 1.0.0
+  zahori-moon:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-06-13T13:58:11.388023731Z"
+    dependencies:
+    - name: moon2
+      repository: https://charts.aerokube.com/
+      version: 2.5.1+1
+    description: A Helm chart for Kubernetes
+    digest: f4eef9abb685f56e688fe829848da2c0fcdd382f8b06218f479870b9ebf0f11f
+    name: zahori-moon
+    type: application
+    urls:
+    - https://github.com/zahori-io/zahori-helm-charts/releases/download/zahori-moon-1.0.0/zahori-moon-1.0.0.tgz
+    version: 1.0.0
   zahori-postgresql:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-06-13T13:58:11.545249617Z"
+    description: A Helm chart for Kubernetes
+    digest: c6e471138238896f063350efe0f7e1a40c1f33bd46055204671ee7275c1b67d0
+    name: zahori-postgresql
+    type: application
+    urls:
+    - https://github.com/zahori-io/zahori-helm-charts/releases/download/zahori-postgresql-1.0.1/zahori-postgresql-1.0.1.tgz
+    version: 1.0.1
   - apiVersion: v2
     appVersion: 1.16.0
     created: "2023-06-06T10:26:38.660392691Z"
@@ -12,6 +52,19 @@ entries:
     - https://github.com/zahori-io/zahori-helm-charts/releases/download/zahori-postgresql-1.0.0/zahori-postgresql-1.0.0.tgz
     version: 1.0.0
   zahori-process:
+  - apiVersion: v2
+    appVersion: 0.1.12
+    created: "2023-06-13T13:58:11.700219569Z"
+    description: Zahori Process Example Wikipedia
+    digest: beed283d733960909bbdb0595e5b4eb4f14511f78683e67061674ea988f96c67
+    maintainers:
+    - email: info@zahori.io
+      name: Panel Sistemas Zahori Team
+    name: zahori-process
+    type: application
+    urls:
+    - https://github.com/zahori-io/zahori-helm-charts/releases/download/zahori-process-1.0.2/zahori-process-1.0.2.tgz
+    version: 1.0.2
   - apiVersion: v2
     appVersion: 0.1.12
     created: "2023-05-31T13:37:31.94609718Z"
@@ -38,4 +91,15 @@ entries:
     urls:
     - https://github.com/zahori-io/zahori-helm-charts/releases/download/zahori-process-1.0.0/zahori-process-1.0.0.tgz
     version: 1.0.0
-generated: "2023-06-06T10:26:38.660411691Z"
+  zahori-server:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-06-13T13:58:11.855768124Z"
+    description: A Helm chart for Kubernetes
+    digest: 3844159886d6cedb29173b2beb423897b77608bfcf7e7d7df38dacd810e62ecf
+    name: zahori-server
+    type: application
+    urls:
+    - https://github.com/zahori-io/zahori-helm-charts/releases/download/zahori-server-1.0.0/zahori-server-1.0.0.tgz
+    version: 1.0.0
+generated: "2023-06-13T13:58:11.855787925Z"
