@@ -6,7 +6,7 @@ Expand the name of the chart.
 {{- end }}
 
 {{- define "zahori-postgresql-chart.myname" -}}
-{{- printf "%s-%s" .Release.Name (trimSuffix "-chart" .Chart.Name) -}}
+{{- printf "%s" (trimSuffix "-chart" .Chart.Name) -}}
 {{- end }}
 
 {{- define "zahori-postgresql-chart.service.name" -}}
@@ -27,6 +27,10 @@ zahori-postgresql-service
 
 {{- define "zahori-postgresql-chart.config.public" -}}
 {{- printf "%s-public" (include "zahori-postgresql-chart.myname" .) -}}
+{{- end }}
+
+{{- define "zahori-postgresql-chart.statefulset.public" -}}
+{{- printf "%s-statefulset" (include "zahori-postgresql-chart.myname" .) -}}
 {{- end }}
 
 {{/*

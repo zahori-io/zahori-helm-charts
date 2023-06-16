@@ -3,7 +3,7 @@ kind: StatefulSet
 metadata:
   labels:
     app: {{ include "zahori-postgresql-chart.label" . }}
-  name: {{ include "zahori-postgresql-chart.myname" . }}-statefulset
+  name: {{ include "zahori-postgresql-chart.statefulset.public" . }}
   namespace: {{ .Values.namespace }}
 spec:
   {{- if not .Values.autoscaling.enabled }}

@@ -2,8 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: "{{ include "zahori-postgresql-chart.fullname" . }}-test-connection"
-  labels:
-    {{- include "zahori-postgresql-chart.labels" . | nindent 4 }}
+  labels: {{ include "zahori-postgresql-chart.label" . }}
   annotations:
     "helm.sh/hook": test
 spec:
@@ -11,5 +10,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['{{ include "zahori-postgresql-chart.fullname" . }}:{{ .Values.service.port }}']
+      args: ['{{ include "zahori-postgresql-chart.service.name" . }}:{{ .Values.service.port }}']
   restartPolicy: Never
