@@ -65,7 +65,7 @@ autoscaling:
 storage:
   size: 2Gi
   useLocalStorage: true
-  provisioner: rancher.io/local-path
+  provisioner: local-path
 
 nodeSelector: {}
 
