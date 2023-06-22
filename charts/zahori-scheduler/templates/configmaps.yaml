@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app: {{ include "zahori-scheduler.label" . }}
+  name: {{ include "zahori-scheduler.config.public" . }}
+  namespace: {{ .Values.namespace }}
+data:
+  ZAHORI_CONSUL_HOST: "{{ .Values.config.ZAHORI_CONSUL_HOST }}"
+  ZAHORI_CONSUL_PORT: "{{ .Values.config.ZAHORI_CONSUL_PORT }}"
+  ZAHORI_SCHEDULER_PORT: "{{ .Values.config.ZAHORI_SCHEDULER_PORT }}"
+
+
+
+
