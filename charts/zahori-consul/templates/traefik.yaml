@@ -2,7 +2,7 @@
 apiVersion: {{ .Values.traefik.apiVersion }}
 kind: IngressRoute
 metadata:
-  name: openzahori-consul-ingressroute
+  name: zahori-consul-ingressroute
   namespace: {{ .Values.namespace }}
 spec:
   entryPoints:
