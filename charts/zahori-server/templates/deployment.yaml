@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: {{ include "zahori-server-chart.label" . }}
-  name: openzahori-zahori-test
+  name: {{ include "zahori-server-chart.deployment.name" . }}
   namespace: {{ .Values.namespace }}
 spec:
   replicas: 1

@@ -11,4 +11,4 @@ spec:
   resources:
     requests:
       storage: {{ .Values.storage.size }}
-  storageClassName: {{ include "zahori-server-chart.storageclass.name" . }}
+  storageClassName: {{ .Values.storage.provisioner }}

@@ -6,7 +6,7 @@ Expand the name of the chart.
 {{- end }}
 
 {{- define "zahori-server-chart.myname" -}}
-{{- printf "%s-%s" .Release.Name (trimSuffix "-chart" .Chart.Name) -}}
+{{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{- define "zahori-server-chart.label" -}}
@@ -14,28 +14,34 @@ zahori
 {{- end }}
 
 {{- define "zahori-server-chart.config.scripts" -}}
-{{- printf "%s-scripts" (include "zahori-server-chart.myname" .) -}}
+{{- printf "%s-scripts" (include "zahori-server-chart.name" .) -}}
 {{- end }}
 
 {{- define "zahori-server-chart.config.public" -}}
-{{- printf "%s-config" (include "zahori-server-chart.myname" .) -}}
+{{- printf "%s-config" (include "zahori-server-chart.name" .) -}}
 {{- end }}
 
 {{- define "zahori-server-chart.config.secret" -}}
-{{- printf "%s-secret" (include "zahori-server-chart.myname" .) -}}
+{{- printf "%s-secret" (include "zahori-server-chart.name" .) -}}
 {{- end }}
 
 {{- define "zahori-server-chart.storageclass.name" -}}
-{{- printf "%s-storage" (include "zahori-server-chart.myname" .) -}}
+{{- printf "%s-storage" (include "zahori-server-chart.name" .) -}}
 {{- end }}
 
 {{- define "zahori-server-chart.storage.claim" -}}
-{{- printf "%s-claim" (include "zahori-server-chart.myname" .) -}}
+{{- printf "%s-claim" (include "zahori-server-chart.name" .) -}}
+{{- end }}
+
+
+{{- define "zahori-server-chart.deployment.name" -}}
+{{- printf "%s-deployment" (include "zahori-server-chart.name" .) -}}
 {{- end }}
 
 {{- define "zahori-server-chart.service.name" -}}
-zahori-server-service
+{{- printf "%s-service" (include "zahori-server-chart.name" .) -}}
 {{- end }}
+
 
 {{/*
 Create a default fully qualified app name.
