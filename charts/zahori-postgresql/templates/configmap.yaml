@@ -8,3 +8,4 @@ metadata:
 data:
   POSTGRES_DB: {{ .Values.postgres.db }}
   POSTGRES_USER: {{ .Values.postgres.user }}
+
