@@ -2,7 +2,7 @@
 apiVersion: {{ .Values.traefik.apiVersion }}
 kind: IngressRoute
 metadata:
-  name: openzahori-server-ingressroute
+  name: zahori-moon-ingressroute
   namespace: {{ .Values.namespace }}
 spec:
   entryPoints:
