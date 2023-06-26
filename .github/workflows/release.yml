@@ -52,7 +52,7 @@ jobs:
           KEY_ID=$(gpg --list-secret-keys --keyid-format LONG | grep sec | awk '{print $2}' | awk -F'/' '{print $2}')
           mkdir signed-charts
           for dir in ./charts/*; do
-            [ -d "$dir" ] && helm package "$dir" --sign --key "$KEY_ID" --keyring /home/runner/.gnupg/trustdb.gpg --destination ./signed-charts
+            [ -d "$dir" ] && helm package "$dir" --sign --key "$KEY_ID" --keyring /home/runner/.gnupg/secring.gpg --destination ./signed-charts
           done
 
       - name: Run chart-releaser
