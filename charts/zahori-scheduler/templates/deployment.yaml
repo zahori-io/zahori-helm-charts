@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: {{ include "zahori-scheduler.label" . }}
+  name: openzahori-zahori-scheduler
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ include "zahori-scheduler.label" . }}
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: {{ include "zahori-scheduler.label" . }}
+    spec:
+      containers:
+      - env:
+        envFrom:
+        - configMapRef:
+            name: {{ include "zahori-scheduler.config.public" . }}
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        lifecycle:
+          preStop:
+            exec:
+              command:
+              - sh
+              - -c
+              - sleep 10
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /actuator/health/liveness
+            port: {{ .Values.config.ZAHORI_SCHEDULER_PORT }}
+            scheme: HTTP
+          initialDelaySeconds: 120
+          successThreshold: 1
+        name: zahori
+        ports:
+        - containerPort: {{ .Values.config.ZAHORI_SCHEDULER_PORT }}
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /actuator/health/readiness
+            port: {{ .Values.config.ZAHORI_SCHEDULER_PORT }}
+            scheme: HTTP
+          initialDelaySeconds: 20
+          successThreshold: 1
+        resources:
+          limits:
+            cpu: {{ .Values.resources.limits.cpu }}
+            memory: {{ .Values.resources.limits.memory }}
+          requests:
+            cpu: {{ .Values.resources.requests.cpu }}
+            memory: {{ .Values.resources.requests.memory }}
+status: {}

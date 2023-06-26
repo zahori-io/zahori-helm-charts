@@ -1,0 +1,109 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: {{ include "zahori-server-chart.label" . }}
+  name: {{ include "zahori-server-chart.deployment.name" . }}
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ include "zahori-server-chart.label" . }}
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: {{ include "zahori-server-chart.label" . }}
+    spec:
+      containers:
+      - env:
+        - name: ZAHORI_DB_HOST
+          value: zahori-postgresql-service
+        - name: ZAHORI_CONSUL_HOST
+          value: consul-ui
+        - name: ZAHORI_SELENOID_UI_INTERNAL_HOST
+          value: moon.moon.svc.cluster.local
+        - name: ZAHORI_DB_PASS
+          valueFrom:
+            secretKeyRef:
+              key: POSTGRES_PASSWORD
+              name: {{ include "zahori-server-chart.config.secret" . }}
+        envFrom:
+        - configMapRef:
+            name: {{ include "zahori-server-chart.config.public" . }}
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        lifecycle:
+          preStop:
+            exec:
+              command:
+              - sh
+              - -c
+              - sleep 10
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /zahori/actuator/health/liveness
+            port: {{ .Values.config.ZAHORI_SERVER_PORT }}
+            scheme: HTTP
+          initialDelaySeconds: 120
+          successThreshold: 1
+        name: zahori
+        ports:
+        - containerPort: {{ .Values.config.ZAHORI_SERVER_PORT }}
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /zahori/actuator/health/readiness
+            port: {{ .Values.config.ZAHORI_SERVER_PORT }}
+            scheme: HTTP
+          initialDelaySeconds: 20
+          successThreshold: 1
+        resources:
+          limits:
+            cpu: {{ .Values.resources.limits.cpu }}
+            memory: {{ .Values.resources.limits.memory }}
+          requests:
+            cpu: {{ .Values.resources.requests.cpu }}
+            memory: {{ .Values.resources.requests.memory }}
+        volumeMounts:
+        - mountPath: /usr/app/evidences
+          name: zahori-data
+      initContainers:
+      - command:
+        - flyway
+        - migrate
+        env:
+        - name: FLYWAY_URL
+          value: {{ .Values.flyway.FLYWAY_URL }}
+        - name: FLYWAY_USER
+          valueFrom:
+            configMapKeyRef:
+              key: ZAHORI_DB_USER
+              name: {{ include "zahori-server-chart.config.public" . }}
+        - name: FLYWAY_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: POSTGRES_PASSWORD
+              name: {{ include "zahori-server-chart.config.secret" . }}
+        - name: FLYWAY_PLACEHOLDER_REPLACEMENT
+          value: "true"
+        - name: FLYWAY_PLACEHOLDERS_ZAHORI_DB_USER
+          valueFrom:
+            configMapKeyRef:
+              key: ZAHORI_DB_USER
+              name:  {{ include "zahori-server-chart.config.public" . }}
+        image: "{{ .Values.flyway.image.name }}:{{ .Values.flyway.image.tag }}"
+        name: flyway
+        volumeMounts:
+        - mountPath: /flyway/sql
+          name: postgres-initdb
+      volumes:
+      - name: zahori-data
+        persistentVolumeClaim:
+          claimName: {{ include "zahori-server-chart.storage.claim" . }}
+      - configMap:
+          name: {{ include "zahori-server-chart.config.scripts" . }}
+        name: postgres-initdb
+status: {}
