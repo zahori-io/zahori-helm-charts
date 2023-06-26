@@ -59,7 +59,7 @@ jobs:
         run: |
           mkdir signed-charts
           for dir in ./charts/*; do
-            [ -d "$dir" ] && helm package "$dir" --sign --key "${{ steps.get-key-id.outputs.key_id }}" --destination ./signed-charts
+            [ -d "$dir" ] && helm package "$dir" --sign --key "${{ steps.get-key-id.outputs.key_id }}" --keyring /home/runner/.gnupg/trustdb.gpg --destination ./signed-charts
           done    
 
       - name: Run chart-releaser
