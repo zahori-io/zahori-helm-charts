@@ -1,7 +1,7 @@
-## Tutorial: Step-by-Step Installation of the "zahori-postgresql" Helm Chart from ArtifactHub
+## Tutorial: Step-by-Step Installation of the "zahori-moon" Helm Chart from ArtifactHub
 
 
-**Note:** This tutorial will guide you through the step-by-step installation process of the "zahori-postgresql" Helm chart from [ArtifactHub](https://artifacthub.io/packages/helm/zahori/zahori-postgresql). 
+**Note:** This tutorial will guide you through the step-by-step installation process of the "zahori-moon" Helm chart from [ArtifactHub](https://artifacthub.io/packages/helm/zahori/zahori-moon). 
 
 ### Step 1: Set up the environment
 
@@ -23,27 +23,28 @@ Once you have added the repository, make sure to update the repositories to fetc
 
 ```shell
 helm repo update
+helm dependency build
 ```
 
-### Step 4: Create Namespace zahori
+This will update the Helm repositories on your local machine.
+
+### Step 4: Create Namespace moon
 
 Now you create namespace moon on your cluster. Run the following command:
 
 ```shell
-kubectl create namespace zahori
+kubectl create namespace moon
 ```
-
-This will update the Helm repositories on your local machine.
 
 ### Step 5: Install the chart
 
 Now you can install the chart on your cluster. Run the following command:
 
 ```shell
-helm install postgresql zahori/zahori-postgresql -n zahori
+helm install moon zahori/zahori-moon values.yaml -n moon
 ```
 
-This will install the "zahori-postgresql" chart from the "zahori" repository into your cluster.
+This will install the "zahori-moon" chart from the "zahori" repository into your cluster.
 
 ### Step 6: Verify the installation
 
@@ -53,17 +54,17 @@ Once the installation is complete, you can verify if the chart has been installe
 helm ls
 ```
 
-This will display a list of charts installed in your cluster, and you should see the "zahori-postgresql" chart in the list.
+This will display a list of charts installed in your cluster, and you should see the "zahori-moon" chart in the list.
 
-### Step 6: Customize the installation (optional)
+### Step 7: Customize the installation (optional)
 
 If you want to customize the installation of the chart, you can provide custom values using a YAML values file. You can create a custom values file (e.g., "my-values.yaml") and use it during installation with the following command:
 
 ```shell
-helm install postgresql zahori/zahori-postgresql -n zahori -f my-values.yaml
+helm install moon zahori/zahori-moon -n zahori -f values.yaml
 ```
 
-Make sure to adjust the content of the "my-values.yaml" file according to your needs.
+Make sure to adjust the content of the "values.yaml" file according to your needs.
 
-That's it! You have completed the installation of the "zahori-postgresql" chart into your cluster using Helm. Remember to refer to the chart's documentation and specific provider requirements for more information on how to use and configure it properly.
+That's it! You have completed the installation of the "zahori-moon" chart into your cluster using Helm. Remember to refer to the chart's documentation and specific provider requirements for more information on how to use and configure it properly.
 
