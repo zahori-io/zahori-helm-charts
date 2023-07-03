@@ -45,16 +45,11 @@ jobs:
           for dir in ./charts/*; do
             [ -d "$dir" ] && helm dependency update "$dir"
           done
-     
-      - name: Import PGP Key, Get Key ID, and Sign and Package Charts
-        run: |
-          echo "${{ secrets.PGP_PRIVATE_KEY }}" | gpg --batch --yes --passphrase=${{ secrets.PGP_PASSPHRASE }} --import
-          KEY_ID=$(gpg --list-secret-keys --keyid-format LONG | grep sec | awk '{print $2}' | awk -F'/' '{print $2}')
-          mkdir signed-charts
-          for dir in ./charts/*; do
-            [ -d "$dir" ] && helm package "$dir" --sign --key "$KEY_ID" --keyring /home/runner/.gnupg/pubring.kbx --destination ./signed-charts
-          done
 
+      - name: Import PGP Key
+        run: |
+          echo "${{ secrets.PGP_PRIVATE_KEY }}" | gpg --batch --yes --passphrase=${{ secrets.PGP_PASSPHRASE }} --import           
+     
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.5.0
         with:
