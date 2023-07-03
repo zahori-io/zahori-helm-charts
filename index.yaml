@@ -109,6 +109,16 @@ entries:
   zahori-scheduler:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2023-07-03T12:55:59.809965971Z"
+    description: A Helm chart for Kubernetes
+    digest: 546d0617eec5f2a04fa1c794aaf4029773b95a96bbd535eea1af765470a09b78
+    name: zahori-scheduler
+    type: application
+    urls:
+    - https://github.com/zahori-io/zahori-helm-charts/releases/download/zahori-scheduler-1.0.1/zahori-scheduler-1.0.1.tgz
+    version: 1.0.1
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2023-07-03T13:57:42.6394582+02:00"
     description: A Helm chart for Kubernetes
     digest: ac11a8cb37a58fcf83dd9114186f513bd0b27c6605b387a3a4fa5f9efd464450
@@ -138,4 +148,4 @@ entries:
     urls:
     - https://github.com/zahori-io/zahori-helm-charts/releases/download/zahori-server-1.0.0/zahori-server-1.0.0.tgz
     version: 1.0.0
-generated: "2023-07-03T12:44:51.765429829Z"
+generated: "2023-07-03T12:55:59.934377989Z"
