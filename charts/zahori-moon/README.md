@@ -3,7 +3,7 @@
 
 **Note:** This tutorial will guide you through the step-by-step installation process of the "zahori-moon" Helm chart from [ArtifactHub](https://artifacthub.io/packages/helm/zahori/zahori-moon). 
 
-### Step 1: Set up the environment
+### Step 1: Set up the environment 
 
 Ensure that Helm is installed on your local machine. You can follow the installation instructions on the official Helm website ([https://helm.sh](https://helm.sh)) based on your operating system.
 

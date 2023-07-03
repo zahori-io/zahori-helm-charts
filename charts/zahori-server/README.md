@@ -7,7 +7,7 @@
 
 Ensure that Helm is installed on your local machine. You can follow the installation instructions on the official Helm website ([https://helm.sh](https://helm.sh)) based on your operating system.
 
-### Step 2: Add the repository
+### Step 2: Add the repository 
 
 To add the repository that contains the Helm chart, run the following command:
 

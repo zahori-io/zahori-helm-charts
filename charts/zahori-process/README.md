@@ -7,7 +7,7 @@
 
 2. Make sure to install the Helm chart in the same namespace where Zahori is installed. This will ensure that the chart components are deployed within the same namespace as Zahori, enabling proper integration and functionality.
 
-### Step 1: Set up the environment
+### Step 1: Set up the environment 
 
 Ensure that Helm is installed on your local machine. You can follow the installation instructions on the official Helm website ([https://helm.sh](https://helm.sh)) based on your operating system.
 
