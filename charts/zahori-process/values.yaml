@@ -1,7 +1,7 @@
 replicaCount: 1
 image:
   repository: zahoriaut/zahori-process
-  tag: 0.1.12
+  tag: 0.1.13
   pullPolicy: Always
 service:
   type: ClusterIP
