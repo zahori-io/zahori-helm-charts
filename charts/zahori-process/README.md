@@ -36,7 +36,7 @@ This will update the Helm repositories on your local machine.
 Now you can install the chart on your cluster. Run the following command:
 
 ```shell
-helm install zahori-process zahori/zahori-process -n zahori
+helm install wikipedia zahori/zahori-process -n zahori
 ```
 
 This will install the "zahori-process" chart from the "zahori" repository into your cluster.
@@ -56,7 +56,7 @@ This will display a list of charts installed in your cluster, and you should see
 If you want to customize the installation of the chart, you can provide custom values using a YAML values file. You can create a custom values file (e.g., "my-values.yaml") and use it during installation with the following command:
 
 ```shell
-helm install zahori-process zahori/zahori-process -n zahori -f my-values.yaml
+helm install wikipedia zahori/zahori-process -n zahori -f my-values.yaml
 ```
 
 Make sure to adjust the content of the "my-values.yaml" file according to your needs.
