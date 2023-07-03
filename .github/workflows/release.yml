@@ -32,9 +32,9 @@ jobs:
         run: |
           helm repo add hashicorp https://helm.releases.hashicorp.com
           
-      - name: Add zahori Helm repo
-        run: |
-          helm repo add zahori https://zahori-io.github.io/zahori-helm-charts          
+      # - name: Add zahori Helm repo
+      #   run: |
+      #     helm repo add zahori https://zahori-io.github.io/zahori-helm-charts        
 
       - name: Update Helm repos
         run: |
