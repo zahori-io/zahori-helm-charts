@@ -2,4 +2,4 @@
 # Set to true for GPG signing
 sign: true
 # UID of the GPG key to use
-key: 9002117265A80213EE15FB4889BA70874C7C7892
+key: zahori.io
