@@ -21,3 +21,5 @@ consul:
     enabled: true
   global:
     name: consul
+  server:
+    storage: 2Gi

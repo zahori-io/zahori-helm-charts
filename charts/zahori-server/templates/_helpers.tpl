@@ -10,7 +10,7 @@ Expand the name of the chart.
 {{- end }}
 
 {{- define "zahori-server-chart.label" -}}
-zahori
+zahori-server
 {{- end }}
 
 {{- define "zahori-server-chart.config.scripts" -}}
