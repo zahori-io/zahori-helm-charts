@@ -10,7 +10,7 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-  - name: postgres
+  - name: portServer
     port: {{ .Values.service.port }}
     protocol: TCP
     targetPort: {{ .Values.service.port }}

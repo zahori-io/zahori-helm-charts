@@ -5,10 +5,12 @@ metadata:
     app: {{ include "zahori-scheduler.label" . }}
   name: {{ include "zahori-scheduler.service.name" . }}
   namespace: {{ .Values.namespace }}
+  annotations:
+      {{- toYaml .Values.service.annotations | nindent 4 }}  
 spec:
   type: {{ .Values.service.type }}
   ports:
-  - name: postgres
+  - name: portScheduler
     port: {{ .Values.service.port }}
     protocol: TCP
     targetPort: {{ .Values.service.port }}

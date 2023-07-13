@@ -41,6 +41,7 @@ securityContext:
 service:
   type: NodePort
   port: 5432
+  annotations: {}
 
 resources:
   {}
@@ -63,6 +64,7 @@ autoscaling:
   # targetMemoryUtilizationPercentage: 80
 
 storage:
+  annotations: {}
   size: 2Gi
   useLocalStorage: true
   provisioner: local-path
@@ -78,3 +80,6 @@ postgres:
   db: zahori
   user: zahori
   password: emFob3Jp
+
+deployment:
+  annotations: {}

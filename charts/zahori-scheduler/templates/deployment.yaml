@@ -13,6 +13,8 @@ spec:
   strategy: {}
   template:
     metadata:
+      annotations:
+        {{- toYaml .Values.deployment.annotations | nindent 8 }}
       labels:
         app: {{ include "zahori-scheduler.label" . }}
     spec:

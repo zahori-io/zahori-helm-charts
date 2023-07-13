@@ -5,6 +5,8 @@ metadata:
     app: {{ include "zahori-process.name" . }}
   name: {{ include "zahori-process.fullname" . }}
   namespace: {{ .Release.Namespace }}
+  annotations:
+      {{- toYaml .Values.service.annotations | nindent 4 }}  
 spec:
   ports:
   - name: {{ .Values.service.port }}-{{ .Values.service.port }}

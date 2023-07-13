@@ -12,6 +12,8 @@ spec:
       app: {{ include "zahori-process.name" . }}
   template:
     metadata:
+      annotations:
+        {{- toYaml .Values.deployment.annotations | nindent 8 }} 
       labels:
         app: {{ include "zahori-process.name" . }}
     spec:

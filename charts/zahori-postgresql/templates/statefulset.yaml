@@ -15,6 +15,8 @@ spec:
   serviceName: postgres
   template:
     metadata:
+      annotations:
+        {{- toYaml .Values.deployment.annotations | nindent 8 }} 
       labels:
         app: {{ include "zahori-postgresql-chart.label" . }}
     spec:
