@@ -35,6 +35,10 @@ securityContext:
 service:
   type: ClusterIP
   port: 9090
+  annotations:
+    {}
+    # service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+    # service.beta.kubernetes.io/aws-load-balancer-internal: "0.0.0.0/0"
 
 ingress:
   enabled: false
@@ -105,6 +109,7 @@ postgres:
   password: emFob3Jp
 
 storage:
+  annotations: {}
   size: 2Gi
   useLocalStorage: true
   provisioner: local-path
@@ -122,3 +127,6 @@ traefik:
       service:
         name: "zahori-server-service"
         port: 9090
+
+deployment:
+  annotations: {}

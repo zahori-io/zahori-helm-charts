@@ -2,8 +2,10 @@
 apiVersion: {{ .Values.traefik.apiVersion }}
 kind: IngressRoute
 metadata:
-  name: openzahori-server-ingressroute
+  name: {{ include "zahori-server-chart.traefik.name" . }}
   namespace: {{ .Values.namespace }}
+  annotations:
+    {{- toYaml .Values.traefik.annotations | nindent 4 }}  
 spec:
   entryPoints:
   - web

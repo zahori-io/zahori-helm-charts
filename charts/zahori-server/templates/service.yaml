@@ -5,6 +5,8 @@ metadata:
     app: {{ include "zahori-server-chart.label" . }}
   name: {{ include "zahori-server-chart.service.name" . }}
   namespace: {{ .Values.namespace }}
+  annotations:
+      {{- toYaml .Values.service.annotations | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:

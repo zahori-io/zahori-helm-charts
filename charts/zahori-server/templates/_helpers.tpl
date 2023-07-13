@@ -42,6 +42,9 @@ zahori-server
 {{- printf "%s-service" (include "zahori-server-chart.name" .) -}}
 {{- end }}
 
+{{- define "zahori-server-chart.traefik.name" -}}
+{{- printf "%s-traefik" (include "zahori-server-chart.name" .) -}}
+{{- end }}
 
 {{/*
 Create a default fully qualified app name.

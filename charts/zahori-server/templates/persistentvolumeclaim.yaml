@@ -5,6 +5,8 @@ metadata:
     app: {{ include "zahori-server-chart.label" . }}
   name: {{ include "zahori-server-chart.storage.claim" . }}
   namespace: {{ .Values.namespace }}
+  annotations:
+    {{- toYaml .Values.storage.annotations | nindent 4 }}  
 spec:
   accessModes:
   - ReadWriteOnce
