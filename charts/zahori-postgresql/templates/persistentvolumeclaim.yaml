@@ -13,4 +13,6 @@ spec:
   resources:
     requests:
       storage: {{ .Values.storage.size }}
+{{- if and .Values.storage.provisioner (ne .Values.storage.provisioner "") }}
   storageClassName: {{ .Values.storage.provisioner }}
+{{- end }}
