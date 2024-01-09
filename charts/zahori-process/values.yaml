@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: zahoriaut/zahori-process
-  tag: 0.1.13
+  tag: 0.1.15
   pullPolicy: Always
 
 service:
