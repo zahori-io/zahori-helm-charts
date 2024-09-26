@@ -25,7 +25,7 @@ appVersion: "1.16.0"
 
 dependencies:
   - name: moon2
-    version: 2.5.1+1
+    version: 2.7.2
     repository: https://charts.aerokube.com/
 
 maintainers:
