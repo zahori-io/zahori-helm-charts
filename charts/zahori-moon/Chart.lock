@@ -1,6 +1,6 @@
 dependencies:
 - name: moon2
   repository: https://charts.aerokube.com/
-  version: 2.5.1+1
-digest: sha256:48541173c4d2e6eba1a720386aa58e84321b1f05589375d099a967c4cae98ad9
-generated: "2023-06-13T10:00:51.3443034+02:00"
+  version: 2.8.2
+digest: sha256:b91287ac90741d4ea1ebc360813976e13ad336ad299be17284f128c72f109ce4
+generated: "2026-10-06T19:12:25.481491889Z"
